@@ -40,7 +40,11 @@
 
 #pragma mark - Initialization
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
 - (id)initWithDefaultColor:(UIColor *)defaultColor
+#else
+- (id)initWithDefaultColor:(NSColor *)defaultColor
+#endif
 {
     if (self = [super init]) {
         _defaultColor = defaultColor;
@@ -72,17 +76,32 @@
     [[NSScanner scannerWithString:gString] scanHexInt:&g];
     [[NSScanner scannerWithString:bString] scanHexInt:&b];
     
+    #if __IPHONE_OS_VERSION_MIN_REQUIRED
     return [UIColor colorWithRed:((CGFloat)r/255.0f)
                            green:((CGFloat)g/255.0f)
                             blue:((CGFloat)b/255.0f)
                            alpha:1.0f];
+    #else
+    return [NSColor colorWithRed:((CGFloat)r/255.0f)
+                           green:((CGFloat)g/255.0f)
+                            blue:((CGFloat)b/255.0f)
+                           alpha:1.0f];
+    #endif
 }
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
 - (id)reverseTransformedValue:(UIColor *)value
 {
     if (![value isKindOfClass:[UIColor class]]) {
         return @"000000";
     }
+#else
+- (id)reverseTransformedValue:(NSColor *)value
+{
+    if (![value isKindOfClass:[NSColor class]]) {
+        return @"000000";
+    }
+#endif
     
     CGFloat red, green, blue;
     [value getRed:&red green:&green blue:&blue alpha:NULL];

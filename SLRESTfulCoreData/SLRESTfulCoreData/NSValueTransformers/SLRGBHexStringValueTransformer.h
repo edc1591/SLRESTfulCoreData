@@ -25,7 +25,11 @@
 //
 
 #import <CoreData/CoreData.h>
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
 #import <UIKit/UIKit.h>
+#else
+#import <AppKit/AppKit.h>
+#endif
 
 
 
@@ -33,9 +37,14 @@
  @abstract  <#abstract comment#>
  */
 @interface SLRGBHexStringValueTransformer : NSValueTransformer
-
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
 @property (nonatomic, strong) UIColor *defaultColor;
 
 - (id)initWithDefaultColor:(UIColor *)defaultColor;
+#else
+@property (nonatomic, strong) NSColor *defaultColor;
+
+- (id)initWithDefaultColor:(NSColor *)defaultColor;
+#endif
 
 @end
