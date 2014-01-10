@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'SLRESTfulCoreData'
-  spec.version      = '1.5.0'
+  spec.version      = '1.5.1'
   spec.ios.deployment_target = '6.0'
   spec.osx.deployment_target = '10.8'
   spec.license      = 'MIT'
