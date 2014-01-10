@@ -1,7 +1,8 @@
 Pod::Spec.new do |spec|
   spec.name         = 'SLRESTfulCoreData'
   spec.version      = '1.5.0'
-  spec.platform     = :ios, '6.0'
+  spec.ios.deployment_target = '6.0'
+  spec.osx.deployment_target = '10.8'
   spec.license      = 'MIT'
   spec.source       = { :git => 'https://github.com/OliverLetterer/SLRESTfulCoreData.git', :tag => spec.version.to_s }
   spec.frameworks   = 'Foundation', 'UIKit', 'CoreData'
